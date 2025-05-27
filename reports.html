@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reports - EcoTrace</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      background: #f0fff0;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      background-color: white;
+      color: #2d8659;
+      border: 2px solid #2d8659;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 999;
+    }
+
+    .back-button:hover {
+      background-color: #f0f0f0;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2d8659;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    th, td {
+      border: 1px solid #aaa;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #2d8659;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <a class="back-button" href="dashboard.html">← Back</a>
+
+  <h2>📊 Emission Reports</h2>
+  <table id="reportTable">
+    <tr><th>Date</th><th>Carbon Emissions (kg CO₂)</th></tr>
+  </table>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("emissionData")) || [];
+    const table = document.getElementById("reportTable");
+
+    data.forEach(entry => {
+      const row = table.insertRow();
+      row.innerHTML = `<td>${entry.date}</td><td>${entry.value}</td>`;
+    });
+  </script>
+</body>
+</html>

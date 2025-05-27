@@ -1,0 +1,64 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+
+  <meta charset="UTF-8" />
+  <title>Sign Up - EcoTrace</title>
+  <link rel="icon" href="ecotrace.png" type="image/png" />
+  <style>
+    body {
+      background: linear-gradient(#66bb6a, #43a047);
+      font-family: sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background-color: #2e7d32;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #a5d6a7;
+      border: none;
+      color: black;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    a {
+      color: white;
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="Name" />
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Password" />
+    <button onclick="location.href='dashboard.html'">Sign Up</button>
+    <a href="login.html">Already have an account? Login</a>
+  </div>
+</body>
+</html>

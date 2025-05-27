@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Settings - EcoTrace</title>
+  <link rel="icon" href="ecotrace.png" type="image/png" />
+  <style>
+    :root {
+      --accent-color: #2d8659;
+      --background-color: #e0f8e0;
+      --text-color: #333;
+      --card-bg: #ffffff;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      --background-color: #121212;
+      --text-color: #ffffff;
+      --card-bg: #1e1e1e;
+    }
+    .header {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: white;
+      color: var(--accent-color);
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .back-btn:hover {
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    select, input[type="checkbox"], input[type="range"] {
+      margin-top: 5px;
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      color: #000;
+    }
+    .dark-mode select, .dark-mode input {
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #666;
+    }
+    .toggle {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .toggle input {
+      width: auto;
+      margin-right: 10px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .range-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="dashboard.html" class="back-btn">⬅ Back</a>
+    <h1 id="title">⚙️ Settings</h1>
+  </div>
+
+  <div class="container">
+    <h2 id="subtitle">Customize Your Experience</h2>
+
+    <label for="language" id="languageLabel">Language:</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
+      <option value="mr">Marathi</option>
+    </select>
+
+    <label for="notifications" id="notifLabel">Enable Notifications:</label>
+    <select id="notifications">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <div class="toggle">
+      <input type="checkbox" id="darkModeToggle" />
+      <label for="darkModeToggle" id="darkModeLabel">Enable Dark Mode</label>
+    </div>
+
+    <label for="fontSize" id="fontSizeLabel">Font Size:</label>
+    <input type="range" id="fontSize" min="12" max="24" value="16" />
+    <div class="range-label">
+      <span id="smallLabel">Small</span><span id="largeLabel">Large</span>
+    </div>
+
+    <label for="theme" id="themeLabel">Theme Color:</label>
+    <select id="theme">
+      <option value="#2d8659">Green</option>
+      <option value="#1e90ff">Blue</option>
+      <option value="#8e44ad">Purple</option>
+      <option value="#e67e22">Orange</option>
+    </select>
+
+    <div class="toggle">
+      <input type="checkbox" id="dataSaver" />
+      <label for="dataSaver" id="dataSaverLabel">Enable Data Saver Mode</label>
+    </div>
+
+    <div class="toggle">
+      <input type="checkbox" id="autoUpdate" />
+      <label for="autoUpdate" id="autoUpdateLabel">Allow Auto Updates</label>
+    </div>
+
+    <button onclick="saveSettings()" id="saveBtn">Save Settings</button>
+  </div>
+
+  <script>
+    const body = document.body;
+    const toggle = document.getElementById("darkModeToggle");
+    const themeSelect = document.getElementById("theme");
+    const languageSelect = document.getElementById("language");
+
+    const translations = {
+      en: {
+        title: "⚙️ Settings",
+        subtitle: "Customize Your Experience",
+        languageLabel: "Language:",
+        notifLabel: "Enable Notifications:",
+        darkModeLabel: "Enable Dark Mode",
+        fontSizeLabel: "Font Size:",
+        smallLabel: "Small",
+        largeLabel: "Large",
+        themeLabel: "Theme Color:",
+        dataSaverLabel: "Enable Data Saver Mode",
+        autoUpdateLabel: "Allow Auto Updates",
+        saveBtn: "Save Settings"
+      },
+      hi: {
+        title: "⚙️ सेटिंग्स",
+        subtitle: "अपने अनुभव को अनुकूलित करें",
+        languageLabel: "भाषा:",
+        notifLabel: "सूचनाएं सक्षम करें:",
+        darkModeLabel: "डार्क मोड सक्षम करें",
+        fontSizeLabel: "फ़ॉन्ट आकार:",
+        smallLabel: "छोटा",
+        largeLabel: "बड़ा",
+        themeLabel: "थीम रंग:",
+        dataSaverLabel: "डेटा सेवर मोड सक्षम करें",
+        autoUpdateLabel: "स्वचालित अपडेट की अनुमति दें",
+        saveBtn: "सेटिंग्स सहेजें"
+      },
+      es: {
+        title: "⚙️ Configuración",
+        subtitle: "Personaliza tu experiencia",
+        languageLabel: "Idioma:",
+        notifLabel: "Habilitar notificaciones:",
+        darkModeLabel: "Activar modo oscuro",
+        fontSizeLabel: "Tamaño de fuente:",
+        smallLabel: "Pequeño",
+        largeLabel: "Grande",
+        themeLabel: "Color del tema:",
+        dataSaverLabel: "Activar modo ahorro de datos",
+        autoUpdateLabel: "Permitir actualizaciones automáticas",
+        saveBtn: "Guardar configuración"
+      },
+      fr: {
+        title: "⚙️ Paramètres",
+        subtitle: "Personnalisez votre expérience",
+        languageLabel: "Langue:",
+        notifLabel: "Activer les notifications:",
+        darkModeLabel: "Activer le mode sombre",
+        fontSizeLabel: "Taille de la police:",
+        smallLabel: "Petit",
+        largeLabel: "Grand",
+        themeLabel: "Couleur du thème:",
+        dataSaverLabel: "Activer le mode économie de données",
+        autoUpdateLabel: "Autoriser les mises à jour automatiques",
+        saveBtn: "Enregistrer les paramètres"
+      },
+      mr: {
+        title: "⚙️ सेटिंग्ज",
+        subtitle: "तुमचा अनुभव वैयक्तिकृत करा",
+        languageLabel: "भाषा:",
+        notifLabel: "सूचना सक्षम करा:",
+        darkModeLabel: "डार्क मोड सक्षम करा",
+        fontSizeLabel: "फॉन्ट आकार:",
+        smallLabel: "लहान",
+        largeLabel: "मोठा",
+        themeLabel: "थीम रंग:",
+        dataSaverLabel: "डेटा सेव्हर मोड सक्षम करा",
+        autoUpdateLabel: "स्वयं अद्यतने अनुमत करा",
+        saveBtn: "सेटिंग्ज जतन करा"
+      }
+    };
+
+    const updateLanguage = (lang) => {
+      const t = translations[lang];
+      for (const id in t) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = t[id];
+      }
+      localStorage.setItem("language", lang);
+    };
+
+    languageSelect.addEventListener("change", (e) => {
+      updateLanguage(e.target.value);
+    });
+
+    window.onload = () => {
+      const savedLang = localStorage.getItem("language") || "en";
+      languageSelect.value = savedLang;
+      updateLanguage(savedLang);
+
+      if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
+        toggle.checked = true;
+      }
+
+      const savedFontSize = localStorage.getItem("fontSize");
+      if (savedFontSize) {
+        body.style.fontSize = savedFontSize + "px";
+        document.getElementById("fontSize").value = savedFontSize;
+      }
+
+      const savedTheme = localStorage.getItem("themeColor");
+      if (savedTheme) {
+        document.documentElement.style.setProperty('--accent-color', savedTheme);
+        themeSelect.value = savedTheme;
+      }
+    };
+
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        body.classList.add("dark-mode");
+        localStorage.setItem("darkMode", "enabled");
+      } else {
+        body.classList.remove("dark-mode");
+        localStorage.setItem("darkMode", "disabled");
+      }
+    });
+
+    document.getElementById("fontSize").addEventListener("input", (e) => {
+      const size = e.target.value;
+      body.style.fontSize = size + "px";
+      localStorage.setItem("fontSize", size);
+    });
+
+    themeSelect.addEventListener("change", (e) => {
+      const color = e.target.value;
+      document.documentElement.style.setProperty('--accent-color', color);
+      localStorage.setItem("themeColor", color);
+    });
+
+    function saveSettings() {
+      alert("Settings saved successfully!");
+    }
+  </script>
+</body>
+</html>

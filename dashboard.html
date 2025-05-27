@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - EcoTrace</title>
+  <link rel="icon" href="ecotrace.png" type="image/png" />
+  <style>
+    body {
+      background: linear-gradient(to right, #d2f5dc, #f0fff0);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .header {
+      background-color: #2d8659;
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .header img {
+      height: 75px;
+      margin-right: 505px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .header p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      background-color: #e0f8e0;
+      padding: 20px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: white;
+      background-color: #2d8659;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .nav a:hover {
+      background-color: #256d4a;
+    }
+
+    .content {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #2d8659;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <img src="ecotrace.jpg" alt="EcoTrace Logo">
+      <div>
+        <div class="header-title">🌿 EcoTrace Dashboard</div>
+        <p>Welcome to your personalized eco-tracking space</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <a href="calculator.html">Emission Calculator</a>
+    <a href="profile.html">Profile</a>
+    <a href="settings.html">Settings</a>
+    <a href="reports.html">Reports</a>
+    <a href="tips.html">Tips</a>
+    <a href="index.html">Log Out</a>
+  </div>
+
+  <div class="content">
+    <h3>Overview</h3>
+    <p>Track your eco habits and reduce your carbon footprint 🌱</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>👤 Profile</h3>
+        <p>Update your name, location, and preferences to personalize your insights.</p>
+      </div>
+      <div class="card">
+        <h3>⚙️ Settings</h3>
+        <p>Switch themes, manage notifications, and customize your dashboard experience.</p>
+      </div>
+      <div class="card">
+        <h3>📈 Reports</h3>
+        <p>View your monthly and yearly carbon emission stats with helpful charts.</p>
+      </div>
+      <div class="card">
+        <h3>💡 Green Tips</h3>
+        <p>Get personalized eco-tips based on your lifestyle habits and choices.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

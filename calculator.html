@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carbon Emission Estimator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f9f2;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: 60px auto 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #2c7a7b;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #2c7a7b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #225e60;
+    }
+    .result {
+      margin-top: 20px;
+      background: #e6fffa;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    /* ✅ BACK BUTTON STYLE */
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #2c7a7b;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Back to Dashboard Button -->
+  <a href="dashboard.html" class="back-button">← Back to Dashboard</a>
+
+  <div class="container">
+    <h2>Carbon Emission Estimator</h2>
+
+    <form id="carbonForm" onsubmit="event.preventDefault(); calculateCarbon();">
+      <label for="distance">Distance traveled (km/day):</label>
+      <input type="number" id="distance" placeholder="e.g., 20" required />
+
+      <label for="transport">Transport Type:</label>
+      <select id="transport" required>
+        <option value="">Select</option>
+        <option value="car">Car</option>
+        <option value="bus">Bus/Public Transport</option>
+        <option value="bike">Bike (Low Emission)</option>
+        <option value="walk">Walk (No Emission)</option>
+      </select>
+
+      <label for="electricity">Electricity used (kWh/month):</label>
+      <input type="number" id="electricity" placeholder="e.g., 300" required />
+
+      <label for="diet">Diet Type:</label>
+      <select id="diet" required>
+        <option value="">Select</option>
+        <option value="meat">Meat-based</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+      </select>
+
+      <label for="waste">Waste generated (kg/week):</label>
+      <input type="number" id="waste" placeholder="e.g., 5" required />
+
+      <button type="submit">Calculate Emissions</button>
+    </form>
+
+    <div class="result" id="output" style="display: none;"></div>
+  </div>
+
+  <script>
+    function calculateCarbon() {
+      const distance = parseFloat(document.getElementById("distance").value);
+      const transport = document.getElementById("transport").value;
+      const electricity = parseFloat(document.getElementById("electricity").value);
+      const diet = document.getElementById("diet").value;
+      const waste = parseFloat(document.getElementById("waste").value);
+
+      const transportFactors = {
+        car: 0.24,
+        bus: 0.05,
+        bike: 0.01,
+        walk: 0
+      };
+      const dietFactors = {
+        meat: 7,
+        vegetarian: 4,
+        vegan: 2.5,
+      };
+      const electricityFactor = 0.85;
+      const wasteFactor = 0.45;
+
+      const transportEmission = distance * transportFactors[transport];
+      const electricityEmission = (electricity * electricityFactor) / 30;
+      const dietEmission = dietFactors[diet];
+      const wasteEmission = (waste * wasteFactor) / 7;
+
+      const totalDaily = (transportEmission + electricityEmission + dietEmission + wasteEmission).toFixed(2);
+      const totalMonthly = (totalDaily * 30).toFixed(2);
+      const totalYearly = (totalDaily * 365).toFixed(2);
+
+      document.getElementById("output").style.display = "block";
+      document.getElementById("output").innerHTML = `
+        <strong>Estimated CO₂ Emissions:</strong><br/>
+        🌍 Daily: <strong>${totalDaily} kg</strong><br/>
+        📅 Monthly: <strong>${totalMonthly} kg</strong><br/>
+        🗓️ Yearly: <strong>${totalYearly} kg</strong><br/><br/>
+        💡 <strong>Tips:</strong><br/>
+        - Use public transport or carpool<br/>
+        - Switch to energy-efficient appliances<br/>
+        - Try reducing meat intake<br/>
+        - Recycle and compost waste
+      `;
+
+      const savedData = JSON.parse(localStorage.getItem("emissionData")) || [];
+      savedData.push({
+        date: new Date().toLocaleDateString(),
+        value: totalDaily
+      });
+      localStorage.setItem("emissionData", JSON.stringify(savedData));
+    }
+  </script>
+</body>
+</html>

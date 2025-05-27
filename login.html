@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+
+  <meta charset="UTF-8" />
+  <title>Login - EcoTrace</title>
+  <link rel="icon" href="ecotrace.png" type="image/png" />
+  <style>
+    body {
+      background: linear-gradient(#bee9c1, #b4cbb5);
+      font-family: sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #1f5f2f;
+      display: flex;
+      align-items: center;
+      padding: 20px 30px;
+      height: 80px;
+    }
+
+    .header img {
+      height: 80px;
+      margin-right: 15px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 80px);
+    }
+
+    .box {
+      background-color: #306f34;
+      padding: 30px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #5ceb96;
+      border: none;
+      color: black;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #4cd184;
+    }
+
+    a {
+      color: white;
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      text-decoration: underline;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .checkbox input {
+      width: auto;
+      margin-right: 8px;
+    }
+
+    label {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="ecotrace.jpg" alt="EcoTrace Logo" />
+    
+  </div>
+
+  <div class="content">
+    <div class="box">
+      <h2>Login</h2>
+      <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="password" placeholder="Password" required />
+
+        <div class="checkbox">
+          <input type="checkbox" id="remember" />
+          <label for="remember">Remember Me</label>
+        </div>
+
+        <button type="submit">Login</button>
+        <a href="#">Forgot Password?</a>
+      </form>
+      <a href="signup.html">Don't have an account? Sign up</a>
+    </div>
+  </div>
+</body>
+</html>

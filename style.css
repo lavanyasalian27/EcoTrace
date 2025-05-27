@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 10vh auto;
+    padding: 30px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: #2e7d32;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  button {
+    padding: 12px;
+    background-color: #00e676;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #00c853;
+  }
+  
+  .result, .suggestion {
+    background-color: #e8f5e9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  nav {
+    background-color: #2e7d32;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .logo-link {
+    display: inline-block;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 12px;
+  }
+  
+  
